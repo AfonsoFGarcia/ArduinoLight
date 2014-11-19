@@ -1,5 +1,7 @@
-import java.io.*;
-import java.net.*;
+package aalto.cmii.remote;
+
+import java.io.IOException;
+import java.net.UnknownHostException;
 
 class Client {
 	public static void main(String[] args) {
@@ -12,11 +14,12 @@ class Client {
 		int TCP_PORT = 5000;
 
 		try {
-			Socket server = new Socket(TCP_IP, TCP_PORT);
-			PrintWriter out = new PrintWriter(server.getOutputStream(), true);
-			BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
-			out.println(args[1]);
-			System.out.println("Received data: " + in.readLine());
+			ServerConnect server = new ServerConnect(TCP_IP, TCP_PORT);
+			if(args[1].equals("ON"))
+				System.out.println(server.sendOn());
+			else if(args[1].equals("OFF"))
+				System.out.println(server.sendOff());
+			server.closeConnection();
 		} catch (UnknownHostException e) {
             System.err.println("Don't know about host " + TCP_IP);
             System.exit(1);
