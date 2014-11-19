@@ -20,7 +20,7 @@ def recvfromclient(conn, addr):
 		data = conn.recv(BUFFER_SIZE)
 		if not data: break
 		if data == 'REQ':
-			conn.send(str(random.randint(1,1000)))
+			conn.send(str(random.randint(0,1023)))
 		elif data == 'ON':
 			LIGHT = 'H'
 			print "Light:", LIGHT
