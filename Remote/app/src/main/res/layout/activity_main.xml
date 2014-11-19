@@ -19,23 +19,25 @@
         android:id="@+id/ipText"
         android:layout_below="@+id/textView"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Connect"
-        android:id="@+id/connectButton"
-        android:layout_below="@+id/ipText"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#ff101810"
+        android:textColorHighlight="#ff101810"
+        android:layout_marginTop="10dp"
+        android:inputType="phone"
+        android:imeActionLabel="Connect"
+        android:imeActionId="10203040"
+        android:imeOptions="actionDone"/>
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Turn on light"
         android:id="@+id/switchButton"
-        android:layout_above="@+id/textView2"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ipText"
+        android:textColor="#ff101810"
+        android:layout_marginTop="10dp"
+        android:enabled="false" />
 
     <TextView
         android:layout_width="fill_parent"
@@ -43,7 +45,9 @@
         android:text="Logs:"
         android:id="@+id/textView2"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/switchButton"
+        android:layout_marginTop="10dp" />
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -51,7 +55,8 @@
         android:id="@+id/scrollView"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/textView2" >
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:layout_width="wrap_content"

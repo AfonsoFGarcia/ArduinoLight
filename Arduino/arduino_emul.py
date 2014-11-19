@@ -19,7 +19,6 @@ def recvfromclient(conn, addr):
 	while True:
 		data = conn.recv(BUFFER_SIZE)
 		if not data: break
-		print 'Received', data, 'from', addr
 		if data == 'REQ':
 			conn.send(str(random.randint(1,1000)))
 		elif data == 'ON':

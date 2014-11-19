@@ -2,7 +2,12 @@ package aalto.cnii.remote;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,11 +22,22 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Button connect = (Button) findViewById(R.id.connectButton);
-        connect.setOnClickListener(new View.OnClickListener() {
+        final EditText serverIP = (EditText) findViewById(R.id.ipText);
+        serverIP.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View view) {
-                new Thread(new ConnectToServer()).start();
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                serverIP.setCursorVisible(true);
+                return false;
+            }
+        });
+        serverIP.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if(actionId == 10203040) {
+                    new Thread(new ConnectToServer()).start();
+                    serverIP.setCursorVisible(false);
+                }
+                return false;
             }
         });
 
@@ -40,15 +56,15 @@ public class MainActivity extends Activity {
     private class ConnectToServer implements Runnable {
         @Override
         public void run() {
-            EditText serverIP = (EditText) findViewById(R.id.ipText);
+            final EditText serverIP = (EditText) findViewById(R.id.ipText);
             try {
                 server = new ServerConnect(serverIP.getText().toString(), 5000);
                 runOnUiThread(new SetLogs("Connected to server!"));
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Button connect = (Button) findViewById(R.id.connectButton);
-                        connect.setClickable(false);
+                        Button switchButton = (Button) findViewById(R.id.switchButton);
+                        switchButton.setEnabled(true);
                     }
                 });
             } catch (Exception e) {

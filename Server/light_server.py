@@ -34,7 +34,6 @@ def getlight():
 	s.connect((ARD_TCP_IP, ARD_TCP_PORT))
 	s.send('REQ')
 	data = s.recv(10)
-	print 'Received', data, 'from', (ARD_TCP_IP, ARD_TCP_PORT)
 	s.close()
 	return num(data)
 
@@ -54,15 +53,12 @@ def recvfromclient(conn, addr):
 		data = conn.recv(BUFFER_SIZE)
 		if not data: break
 		data = data.rstrip()
-		print 'Received', data, 'from', addr
 		if data == 'OFF':
 			data = setlight(data);
-			print 'Received', data, 'from', (ARD_TCP_IP, ARD_TCP_PORT)
 			conn.send('OK\n')
 		elif data == 'ON':
 			if getlight() > THRS:		
 				data = setlight(data)
-				print 'Received', data, 'from', (ARD_TCP_IP, ARD_TCP_PORT)
 				conn.send('OK\n')
 			else:
 				conn.send('NOP\n')
