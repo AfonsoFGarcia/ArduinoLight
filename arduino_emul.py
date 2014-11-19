@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import socket
+import random
 from thread import *
 
 MY_TCP_IP = ''
@@ -20,8 +21,7 @@ def recvfromclient(conn, addr):
 		if not data: break
 		print 'Received', data, 'from', addr
 		if data == 'REQ':
-			VAL = input('Enter the light value: ')
-			conn.send(str(VAL))
+			conn.send(str(random.randint(1,1000)))
 		elif data == 'ON':
 			LIGHT = 'H'
 			print "Light:", LIGHT
