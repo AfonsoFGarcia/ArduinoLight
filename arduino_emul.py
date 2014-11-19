@@ -7,17 +7,31 @@ MY_TCP_IP = ''
 MY_TCP_PORT = 5001
 BUFFER_SIZE = 3
 
+LIGHT = 'L'
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((MY_TCP_IP, MY_TCP_PORT))
 s.listen(1)
 
 def recvfromclient(conn, addr):
+	global LIGHT
 	while True:
 		data = conn.recv(BUFFER_SIZE)
 		if not data: break
 		print 'Received', data, 'from', addr
-		VAL = input('Enter the light value: ')
-		conn.send(str(VAL))
+		if data == 'REQ':
+			VAL = input('Enter the light value: ')
+			conn.send(str(VAL))
+		elif data == 'ON':
+			LIGHT = 'H'
+			print "Light:", LIGHT
+			conn.send('OK')
+		elif data == 'OFF':
+			LIGHT = 'L'
+			print "Light:", LIGHT
+			conn.send('OK')
+		else:
+			conn.send('NOK')
 		break
 	conn.close()
 

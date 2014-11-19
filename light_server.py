@@ -15,7 +15,6 @@ BUFFER_SIZE = 3
 ARD_TCP_IP = sys.argv[1]
 ARD_TCP_PORT = 5001
 
-LIGHT_ON = 'L'
 THRS = int(sys.argv[2])
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -35,11 +34,21 @@ def getlight():
 	s.connect((ARD_TCP_IP, ARD_TCP_PORT))
 	s.send('REQ')
 	data = s.recv(10)
+	print 'Received', data, 'from', (ARD_TCP_IP, ARD_TCP_PORT)
 	s.close()
 	return num(data)
 
+def setlight(val):
+	global ARD_TCP_IP
+	global ARD_TCP_PORT
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	s.connect((ARD_TCP_IP, ARD_TCP_PORT))
+	s.send(val)
+	data = s.recv(2)
+	s.close()
+	return data
+
 def recvfromclient(conn, addr):
-	global LIGHT_ON
 	global THRS
 	while True:
 		data = conn.recv(BUFFER_SIZE)
@@ -47,17 +56,18 @@ def recvfromclient(conn, addr):
 		data = data.rstrip()
 		print 'Received', data, 'from', addr
 		if data == 'OFF':
-			LIGHT_ON = 'L'
-			conn.send('OK ' + LIGHT_ON + '\n')
-		
+			data = setlight(data);
+			print 'Received', data, 'from', (ARD_TCP_IP, ARD_TCP_PORT)
+			conn.send('OK\n')
 		elif data == 'ON':
 			if getlight() > THRS:		
-				LIGHT_ON = 'H'
-				conn.send('OK ' + LIGHT_ON + '\n')
+				data = setlight(data)
+				print 'Received', data, 'from', (ARD_TCP_IP, ARD_TCP_PORT)
+				conn.send('OK\n')
 			else:
-				conn.send('NOP ' + LIGHT_ON + '\n')
+				conn.send('NOP\n')
 		else:
-			conn.send('NOK ' + LIGHT_ON + '\n')
+			conn.send('NOK\n')
 		break
 	conn.close()
 
