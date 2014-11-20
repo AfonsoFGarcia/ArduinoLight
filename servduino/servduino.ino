@@ -1,17 +1,21 @@
-#include <SPI.h>
 #include <Ethernet.h>
+#include <EthernetClient.h>
+#include <EthernetServer.h>
+
+#include <SPI.h>
 
 char incomingByte = 0;
 char message[6];
 int index = 0;
 
 byte mac[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+byte ip[] = {192, 168, 0, 10}
 
 EthernetServer server(5001);
 
 void setup() {
   Serial.begin(9600);
-  Ethernet.begin(mac);
+  Ethernet.begin(mac, ip);
   server.begin();
 }
 
