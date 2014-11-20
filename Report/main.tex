@@ -351,9 +351,16 @@ jani.lollkaal@aalto.fi}}
 %\section{Introduction}
 
 
-\section{System Architecture}
+\section{System architecture}
 
 The developed system is composed by 4 subsystems, interconnected by an IP network supported by a router and an ad-hoc Zig-bee network. The architecture of the system is demonstrated in \textit{Fig. \ref{fig_arch}}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=2.5in]{Architecture}
+\caption{System Architecture}
+\label{fig_arch}
+\end{figure}
 
 The first subsystem is the \textit{Sensor Arduino}. This system is an Arduino that has a LDR (Light Dependent Resistor), a LED (Light Emitting Diode) and a Zig-bee module for communication. In order to provide the needed functionality, it replies to the requests defined in \textit{Appendix \ref{prot_ard}}.
 
@@ -363,16 +370,9 @@ The third subsystem is the \textit{Server}. This system is responsible for recei
 
 The final subsystem is the \textit{Android Smartphone}. This system runs an app that emulates when an user arrives to a building by sending a request to turn on the lights and when a user leaves the building by sending a request to turn off the lights, using the protocol specified in \textit{Appendix \ref{prot_smart}}.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=2.5in]{Architecture}
-\caption{System Architecture}
-\label{fig_arch}
-\end{figure}
-
 The \textit{Base Arduino}, \textit{Server} and \textit{Android Smartphone} subsystems are connected with an IP network. The \textit{Base Arduino} and the \textit{Server} are connected to the router using Ethernet, while the \textit{Android Smartphone} uses WiFi to connect to it. However, the communication between the \textit{Base Arduino} and the \textit{Sensor Arduino} is done using Zig-bee, which means that the \textit{Base Arduino} works as a relay, receiving packets from the \textit{Server} using the IP network and forwarding the requests to the \textit{Sensor Arduino} using Zig-bee.
 
-\section{Sensor Setup}
+\section{Sensor setup}
 
 In order to provide a way to read the light levels in a room and to simulate a light bulb, a LDR and a LED were used, respectively.
 
@@ -385,11 +385,35 @@ A\textsubscript{0} = \frac{R\textsubscript{1}}{R\textsubscript{LDR}+R\textsubscr
 
 The light bulb is simulated using a LED connected to the digital pin 0 of the Arduino. The circuit consists of a 470$\Omega$ resistor connected in series to a LED. The resistor is connected to analog pin 0 and the LED to ground.
 
+\textit{Fig. \ref{fig_schem}} shows how the LDR and the LED are connected to the \textit{Sensor Arduino}.
+
+\begin{figure*}
+\centering
+\includegraphics[width=6in]{ON_Flow}
+\caption{Messages exchanged to turn on the light}
+\label{fig_on_f}
+\end{figure*}
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=2.5in]{Schematics}
 \caption{Sensor schematics}
 \label{fig_schem}
+\end{figure}
+
+\section{Communication between subsystems}
+
+On our system, the \textit{Android Smartphone} acts as the controller for the simulated light bulb on the \textit{Sensor Arduino}. Yet, they are not directly connected and must, therefore, communicate using other subsystems. This is achieved by passing messages between the subsystems.
+
+In \textit{Fig. \ref{fig_on_f}}, the messages that are exchanged when the \textit{Android Smartphone} requests to turn on the light. It also shows the logic implemented in the \textit{Server} to decide if the light should be turned on or not.
+
+\textit{Fig. \ref{fig_off_f}} shows the message exchange for an off request issued by the \textit{Android Smartphone}. The process is simpler because there is no logic associated to this process and the \textit{Server} acts as a relay, transmitting the messages to the \textit{Base Arduino}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=2.5in]{OFF_Flow}
+\caption{Messages exchanged to turn off the light}
+\label{fig_off_f}
 \end{figure}
 
 % needed in second column of first page if using \IEEEpubid
@@ -526,19 +550,19 @@ The aim of this protocol is the transmission of commands from the \textit{Base A
 
 If the \textit{Sensor Arduino} receives a command that is not part of the specification, it replies with the 3 character sequence \textit{NOK}.
 
-\subsection{REQ Command}
+\subsection{REQ command}
 
 The \textbf{REQ} command is issued for requesting the LDR's value. It is sent as the 3 character sequence \texttt{REQ}, without any special character terminating it. The expected reply to this command is a character sequence with, at most, 4 characters that represents an integer value in the range from 0 to 1023. Any other value received is an error and should be discarded.
 
 Under normal operation, the \textit{Sensor Arduino} always executes the command.
 
-\subsection{ON Command}
+\subsection{ON command}
 
 The \textbf{ON} command is issued to turn on the LED. It is sent as the 2 character sequence \texttt{ON}, without any special character terminating it. The expected reply to this command is the character sequence \texttt{OK}, representing the successful execution of the command. Any other value received is an error and should be discarded.
 
 Under normal operation, the \textit{Sensor Arduino} always executes the command.
 
-\subsection{OFF Command}
+\subsection{OFF command}
 
 The \textbf{OFF} command is issued to turn off the LED. It is sent as the 3 character sequence \texttt{OFF}, without any special character terminating it. The expected reply to this command is the character sequence \texttt{OK}, representing the successful execution of the command. Any other value received is an error and should be discarded.
 
@@ -551,19 +575,19 @@ The aim of this protocol is the transmission of commands from the \textit{Server
 
 If the \textit{Base Arduino} receives a command that is not part of the specification, it replies with the 3 character sequence \textit{NOK}.
 
-\subsection{REQ Command}
+\subsection{REQ command}
 
 The \textbf{REQ} command is issued for requesting the LDR's value. It is sent as the 3 character sequence \texttt{REQ}, without any special character terminating it. The expected reply to this command is a character sequence with, at most, 4 characters that represents an integer value in the range from 0 to 1023. Any other value received is an error and should be discarded.
 
 Under normal operation, the \textit{Base Arduino} always executes the command.
 
-\subsection{ON Command}
+\subsection{ON command}
 
 The \textbf{ON} command is issued to turn on the LED. It is sent as the 2 character sequence \texttt{ON}, without any special character terminating it. The expected reply to this command is the character sequence \texttt{OK}, representing the successful execution of the command. Any other value received is an error and should be discarded.
 
 Under normal operation, the \textit{Base Arduino} always executes the command.
 
-\subsection{OFF Command}
+\subsection{OFF command}
 
 The \textbf{OFF} command is issued to turn off the LED. It is sent as the 3 character sequence \texttt{OFF}, without any special character terminating it. The expected reply to this command is the character sequence \texttt{OK}, representing the successful execution of the command. Any other value received is an error and should be discarded.
 
@@ -576,13 +600,13 @@ The aim of this protocol is the transmission of commands from the \textit{Androi
 
 If the \textit{Server} receives a command that is not part of the specification, it replies with the 4 character sequence \textit{NOK\textbackslash n}.
 
-\subsection{ON Command}
+\subsection{ON command}
 
 The \textbf{ON} command is issued to turn on the LED. It is sent as the 3 character sequence \texttt{ON\textbackslash n}. The expected reply to this command is the character sequence \texttt{OK\textbackslash n}, representing the successful execution of the command.
 
 Under normal operation, the \textit{Server} may not execute the command. This is signaled by replying with the character sequence \texttt{NOP\textbackslash n}. Any other value received is an error and should be discarded.
 
-\subsection{OFF Command}
+\subsection{OFF command}
 
 The \textbf{OFF} command is issued to turn off the LED. It is sent as the 4 character sequence \texttt{OFF\textbackslash n}. The expected reply to this command is the character sequence \texttt{OK\textbackslash n}, representing the successful execution of the command. Any other value received is an error and should be discarded.
 
