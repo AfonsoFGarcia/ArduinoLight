@@ -54,11 +54,11 @@ def recvfromclient(conn, addr):
 		if not data: break
 		data = data.rstrip()
 		if data == 'OFF':
-			data = setlight(data);
+			data = setlight(data)
 			conn.send('OK\n')
 		elif data == 'ON':
-			if getlight() > THRS:		
-				data = setlight(data)
+			if getlight() < THRS:		
+				data = setlight(data)	
 				conn.send('OK\n')
 			else:
 				conn.send('NOP\n')
