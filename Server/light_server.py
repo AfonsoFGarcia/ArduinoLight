@@ -81,6 +81,7 @@ def guessval(guess):
 
 def recvfromclient(conn, addr):
 	global THRS
+	global LHT_V
 	while True:
 		data = conn.recv(BUFFER_SIZE)
 		if not data: break
