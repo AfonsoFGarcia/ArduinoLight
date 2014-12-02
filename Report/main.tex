@@ -372,21 +372,6 @@ The final subsystem is the \textit{Android Smartphone}. This system runs an app 
 
 The \textit{Base Arduino}, \textit{Server} and \textit{Android Smartphone} subsystems are connected with an IP network. The \textit{Base Arduino} and the \textit{Server} are connected to the router using Ethernet, while the \textit{Android Smartphone} uses WiFi to connect to it. However, the communication between the \textit{Base Arduino} and the \textit{Sensor Arduino} is done using Zig-bee, which means that the \textit{Base Arduino} works as a relay, receiving packets from the \textit{Server} using the IP network and forwarding the requests to the \textit{Sensor Arduino} using Zig-bee.
 
-\section{Sensor setup}
-
-In order to provide a way to read the light levels in a room and to simulate a light bulb, a LDR and a LED were used, respectively.
-
-The LDR is a type of resistor that is sensible to light, \textit{i.e.}, its resistance varies with the amount of light in the room. It has high resistance when there is low light and low resistance when there is plenty of light. To obtain a value that is proportional to the amount of available light in the analog pin 0 of the Arduino, a \textbf{voltage divider} is used. This is a circuit that follows equation \ref{math_vd} and it uses a resistor with a resistance of 4.7k$\Omega$ in R\textsubscript{1}.
-
-\begin{equation}
-A\textsubscript{0} = \frac{R\textsubscript{1}}{R\textsubscript{LDR}+R\textsubscript{1}}\times5V
-\label{math_vd}
-\end{equation}
-
-The light bulb is simulated using a LED connected to the digital pin 0 of the Arduino. The circuit consists of a 470$\Omega$ resistor connected in series to a LED. The resistor is connected to analog pin 0 and the LED to ground.
-
-\textit{Fig. \ref{fig_schem}} shows how the LDR and the LED are connected to the \textit{Sensor Arduino}.
-
 \begin{figure*}
 \centering
 \includegraphics[width=6in]{ON_Flow}
@@ -394,11 +379,20 @@ The light bulb is simulated using a LED connected to the digital pin 0 of the Ar
 \label{fig_on_f}
 \end{figure*}
 
+\section{Arduino setup}
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=2.5in]{Schematics}
-\caption{Sensor schematics}
-\label{fig_schem}
+\includegraphics[width=2.5in]{Sensor_Arduino}
+\caption{Assembled Sensor Arduino}
+\label{fig_s_ard}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=2.5in]{Server_Arduino}
+\caption{Assembled Base Arduino}
+\label{fig_b_ard}
 \end{figure}
 
 \section{Communication between subsystems}
