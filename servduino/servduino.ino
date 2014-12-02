@@ -11,7 +11,7 @@ char message[6];
 byte index = 0;
 
 byte mac[] = {0x90, 0xA2, 0xDA, 0x0D, 0x75, 0xF6};
-byte ip[] = {192, 168, 0, 10};
+byte ip[] = {192, 168, 1, 10};
 
 EthernetServer server(5001);
 
