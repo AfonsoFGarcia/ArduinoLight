@@ -64,7 +64,7 @@ def recvfromclient(conn, addr):
 		data = conn.recv(BUFFER_SIZE)
 		if not data: break
 		data = data.rstrip()
-		writeLog('[CLI-R] Received '+data+' from client\n')
+		writeLog('\n[CLI-R] Received '+data+' from client\n')
 		if data == 'OFF':
 			data = setlight(data)
 			writeLog('[CLI-S] Sending OK to client\n');
