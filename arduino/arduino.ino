@@ -1,6 +1,8 @@
 int led = 11;
 int signalLed = 11;
 
+int lightStatus = 0;
+
 char incomingByte = 0;
 char message[5];
 byte index = 0;
@@ -123,10 +125,14 @@ void loop() {
       Serial.print(analogRead(A0));
     } else if (strcmp(message,"ON")  == 0) {
       digitalWrite(led, HIGH);
+      lightStatus = 1;
       Serial.print("OK");
     } else if (strcmp(message,"OFF")  == 0) {
       digitalWrite(led, LOW);
+      lightStatus = 0;
       Serial.print("OK");
+    } else if (strcmp(message,"STS") == 0) {
+      Serial.print(lightStatus);
     } else if(message[0] != '\0') {
       Serial.print("NOK");
     }

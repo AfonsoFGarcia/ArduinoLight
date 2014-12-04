@@ -29,29 +29,23 @@ def num(s):
 	except ValueError:
 		return float(s)
 
-def getlight():
+def sendmessage(mes):
+	writeLog('[ARD-S] Sending '+mes+' to arduino\n')
 	global ARD_TCP_IP
 	global ARD_TCP_PORT
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect((ARD_TCP_IP, ARD_TCP_PORT))
-	writeLog('[ARD-S] Sending REQ to arduino\n')
-	s.send('REQ')
+	s.send(mes)
 	data = s.recv(BUFFER_SIZE)
-	writeLog('[ARD-R] Received '+data+' from arduino\n')
 	s.close()
-	return num(data)
+	writeLog('[ARD-R] Received '+data+' from arduino\n')
+	return data
+
+def getlight():
+	return num(sendmessage('REQ'))
 
 def setlight(val):
-	global ARD_TCP_IP
-	global ARD_TCP_PORT
-	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	s.connect((ARD_TCP_IP, ARD_TCP_PORT))
-	writeLog('[ARD-S] Sending '+val+' to arduino\n')
-	s.send(val)
-	data = s.recv(BUFFER_SIZE)
-	writeLog('[ARD-R] Received '+data+' from arduino\n')
-	s.close()
-	return data
+	return num(sendmessage(val))
 
 def blink(times):
 	for x in range(0, times):
@@ -68,10 +62,12 @@ def getval(val):
 	temp = (temp-u)/10
 	d = temp%10
 	c = (temp-d)/10
-	return (c,d,u)
+	ret = (c,d,u)
+	writeLog('\n[GAM-V] Value for game is '+str(ret)+'\n')
+	return ret
 
 def guessval(guess):
-	writeLog('[GAM-G] Value for guess is '+str(guess)+'\n')
+	writeLog('[GAM-G] Value of guess is '+str(guess)+'\n')
 	global LHT_V
 	blinks = 0
 	for x in range (0,3):
@@ -88,7 +84,11 @@ def recvfromclient(conn, addr):
 		tokens = data.split()
 		data = data.rstrip()
 		writeLog('\n[CLI-R] Received '+data+' from client\n')
-		if data == 'OFF':
+		if data == 'STS':
+			data = sendmessage('STS')
+			writeLog('[CLI-S] Sending '+data+' to client\n');
+			conn.send(data+'\n')
+		elif data == 'OFF':
 			data = setlight(data)
 			writeLog('[CLI-S] Sending OK to client\n');
 			conn.send('OK\n')
@@ -102,7 +102,6 @@ def recvfromclient(conn, addr):
 				conn.send('NOP\n')
 		elif data == 'RES':
 			LHT_V = getval(getlight())
-			writeLog('\n[GAM-V] Value for game is '+str(LHT_V)+'\n')
 			conn.send('OK\n')
 		elif tokens[0] == 'G':
 			guessval((int(tokens[1]), int(tokens[2]), int(tokens[3])))
@@ -120,7 +119,6 @@ s.listen(1)
 writeLog('\n[INF-S] Light Server started on port 5000\n\n')
 
 LHT_V = getval(getlight())
-writeLog('\n[GAM-V] Value for game is '+str(LHT_V)+'\n')
 
 while 1:
 	conn, addr = s.accept()
