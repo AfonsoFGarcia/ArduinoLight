@@ -1,312 +1,14 @@
-%% bare_conf.tex
-%% V1.3
-%% 2007/01/11
-%% by Michael Shell
-%% See:
-%% http://www.michaelshell.org/
-%% for current contact information.
-%%
-%% This is a skeleton file demonstrating the use of IEEEtran.cls
-%% (requires IEEEtran.cls version 1.7 or later) with an IEEE conference paper.
-%%
-%% Support sites:
-%% http://www.michaelshell.org/tex/ieeetran/
-%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
-%% and
-%% http://www.ieee.org/
-
-%%*************************************************************************
-%% Legal Notice:
-%% This code is offered as-is without any warranty either expressed or
-%% implied; without even the implied warranty of MERCHANTABILITY or
-%% FITNESS FOR A PARTICULAR PURPOSE! 
-%% User assumes all risk.
-%% In no event shall IEEE or any contributor to this code be liable for
-%% any damages or losses, including, but not limited to, incidental,
-%% consequential, or any other damages, resulting from the use or misuse
-%% of any information contained here.
-%%
-%% All comments are the opinions of their respective authors and are not
-%% necessarily endorsed by the IEEE.
-%%
-%% This work is distributed under the LaTeX Project Public License (LPPL)
-%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
-%% distributed and modified. A copy of the LPPL, version 1.3, is included
-%% in the base LaTeX documentation of all distributions of LaTeX released
-%% 2003/12/01 or later.
-%% Retain all contribution notices and credits.
-%% ** Modified files should be clearly indicated as such, including  **
-%% ** renaming them and changing author support contact information. **
-%%
-%% File list of work: IEEEtran.cls, IEEEtran_HOWTO.pdf, bare_adv.tex,
-%%                    bare_conf.tex, bare_jrnl.tex, bare_jrnl_compsoc.tex
-%%*************************************************************************
-
-% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
-% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
-% *** with production work. IEEE's font choices can trigger bugs that do  ***
-% *** not appear when using other class files.                            ***
-% The testflow support page is at:
-% http://www.michaelshell.org/tex/testflow/
-
-% Note that the a4paper option is mainly intended so that authors in
-% countries using A4 can easily print to A4 and see how their papers will
-% look in print - the typesetting of the document will not typically be
-% affected with changes in paper size (but the bottom and side margins will).
-% Use the testflow package mentioned above to verify correct handling of
-% both paper sizes by the user's LaTeX system.
-%
-% Also note that the "draftcls" or "draftclsnofoot", not "draft", option
-% should be used if it is desired that the figures are to be displayed in
-% draft mode.
-%
 \documentclass[conference, a4paper]{IEEEtran}
 \usepackage{fixltx2e}
 \usepackage{blindtext, graphicx}
 \usepackage{float}
-% Add the compsoc option for Computer Society conferences.
-%
-% If IEEEtran.cls has not been installed into the LaTeX system files,
-% manually specify the path to it like:
-% \documentclass[conference]{../sty/IEEEtran}
-
-% Some very useful LaTeX packages include:
-% (uncomment the ones you want to load)
-
-% *** MISC UTILITY PACKAGES ***
-%
-%\usepackage{ifpdf}
-% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
-% compilation based on whether the output is pdf or dvi.
-% usage:
-% \ifpdf
-%   % pdf code
-% \else
-%   % dvi code
-% \fi
-% The latest version of ifpdf.sty can be obtained from:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
-% Also, note that IEEEtran.cls V1.7 and later provides a builtin
-% \ifCLASSINFOpdf conditional that works the same way.
-% When switching from latex to pdflatex and vice-versa, the compiler may
-% have to be run twice to clear warning/error messages.
-
-% *** CITATION PACKAGES ***
-%
-%\usepackage{cite}
-% cite.sty was written by Donald Arseneau
-% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
-% \cite{} output to follow that of IEEE. Loading the cite package will
-% result in citation numbers being automatically sorted and properly
-% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
-% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
-% \cite will automatically add leading space, if needed. Use cite.sty's
-% noadjust option (cite.sty V3.8 and later) if you want to turn this off.
-% cite.sty is already installed on most LaTeX systems. Be sure and use
-% version 4.0 (2003-05-27) and later if using hyperref.sty. cite.sty does
-% not currently provide for hyperlinked citations.
-% The latest version can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/cite/
-% The documentation is contained in the cite.sty file itself.
-
-% *** GRAPHICS RELATED PACKAGES ***
-%
-\ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../pdf/}{../jpeg/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
-\else
-  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
-  % will default to the driver specified in the system graphics.cfg if no
-  % driver is specified.
-  % \usepackage[dvips]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../eps/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.eps}
-\fi
-% graphicx was written by David Carlisle and Sebastian Rahtz. It is
-% required if you want graphics, photos, etc. graphicx.sty is already
-% installed on most LaTeX systems. The latest version and documentation can
-% be obtained at: 
-% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
-% Another good source of documentation is "Using Imported Graphics in
-% LaTeX2e" by Keith Reckdahl which can be found as epslatex.ps or
-% epslatex.pdf at: http://www.ctan.org/tex-archive/info/
-%
-% latex, and pdflatex in dvi mode, support graphics in encapsulated
-% postscript (.eps) format. pdflatex in pdf mode supports graphics
-% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
-% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
-% not a bitmapped formats (.jpeg, .png). IEEE frowns on bitmapped formats
-% which can result in "jaggedy"/blurry rendering of lines and letters as
-% well as large increases in file sizes.
-%
-% You can find documentation about the pdfTeX application at:
-% http://www.tug.org/applications/pdftex
-
-% *** MATH PACKAGES ***
-%
+\usepackage[table,xcdraw]{xcolor}
 \usepackage[cmex10]{amsmath}
-% A popular package from the American Mathematical Society that provides
-% many useful and powerful commands for dealing with mathematics. If using
-% it, be sure to load this package with the cmex10 option to ensure that
-% only type 1 fonts will utilized at all point sizes. Without this option,
-% it is possible that some math symbols, particularly those within
-% footnotes, will be rendered in bitmap form which will result in a
-% document that can not be IEEE Xplore compliant!
-%
-% Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
-% thus preventing page breaks from occurring within multiline equations. Use:
-%\interdisplaylinepenalty=2500
-% after loading amsmath to restore such page breaks as IEEEtran.cls normally
-% does. amsmath.sty is already installed on most LaTeX systems. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
-
-% *** SPECIALIZED LIST PACKAGES ***
-%
-%\usepackage{algorithmic}
-% algorithmic.sty was written by Peter Williams and Rogerio Brito.
-% This package provides an algorithmic environment fo describing algorithms.
-% You can use the algorithmic environment in-text or within a figure
-% environment to provide for a floating algorithm. Do NOT use the algorithm
-% floating environment provided by algorithm.sty (by the same authors) or
-% algorithm2e.sty (by Christophe Fiorio) as IEEE does not use dedicated
-% algorithm float types and packages that provide these will not provide
-% correct IEEE style captions. The latest version and documentation of
-% algorithmic.sty can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
-% There is also a support site at:
-% http://algorithms.berlios.de/index.html
-% Also of interest may be the (relatively newer and more customizable)
-% algorithmicx.sty package by Szasz Janos:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
-
-% *** ALIGNMENT PACKAGES ***
-%
-%\usepackage{array}
-% Frank Mittelbach's and David Carlisle's array.sty patches and improves
-% the standard LaTeX2e array and tabular environments to provide better
-% appearance and additional user controls. As the default LaTeX2e table
-% generation code is lacking to the point of almost being broken with
-% respect to the quality of the end results, all users are strongly
-% advised to use an enhanced (at the very least that provided by array.sty)
-% set of table tools. array.sty is already installed on most systems. The
-% latest version and documentation can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/required/tools/
-
-%\usepackage{mdwmath}
-%\usepackage{mdwtab}
-% Also highly recommended is Mark Wooding's extremely powerful MDW tools,
-% especially mdwmath.sty and mdwtab.sty which are used to format equations
-% and tables, respectively. The MDWtools set is already installed on most
-% LaTeX systems. The lastest version and documentation is available at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/mdwtools/
-
-% IEEEtran contains the IEEEeqnarray family of commands that can be used to
-% generate multiline equations as well as matrices, tables, etc., of high
-% quality.
-
-%\usepackage{eqparbox}
-% Also of notable interest is Scott Pakin's eqparbox package for creating
-% (automatically sized) equal width boxes - aka "natural width parboxes".
-% Available at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/eqparbox/
-
-% *** SUBFIGURE PACKAGES ***
-%\usepackage[tight,footnotesize]{subfigure}
-% subfigure.sty was written by Steven Douglas Cochran. This package makes it
-% easy to put subfigures in your figures. e.g., "Figure 1a and 1b". For IEEE
-% work, it is a good idea to load it with the tight package option to reduce
-% the amount of white space around the subfigures. subfigure.sty is already
-% installed on most LaTeX systems. The latest version and documentation can
-% be obtained at:
-% http://www.ctan.org/tex-archive/obsolete/macros/latex/contrib/subfigure/
-% subfigure.sty has been superceeded by subfig.sty.
-
-%\usepackage[caption=false]{caption}
-%\usepackage[font=footnotesize]{subfig}
-% subfig.sty, also written by Steven Douglas Cochran, is the modern
-% replacement for subfigure.sty. However, subfig.sty requires and
-% automatically loads Axel Sommerfeldt's caption.sty which will override
-% IEEEtran.cls handling of captions and this will result in nonIEEE style
-% figure/table captions. To prevent this problem, be sure and preload
-% caption.sty with its "caption=false" package option. This is will preserve
-% IEEEtran.cls handing of captions. Version 1.3 (2005/06/28) and later 
-% (recommended due to many improvements over 1.2) of subfig.sty supports
-% the caption=false option directly:
-%\usepackage[caption=false,font=footnotesize]{subfig}
-%
-% The latest version and documentation can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
-% The latest version and documentation of caption.sty can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/caption/
-
-% *** FLOAT PACKAGES ***
-%
-%\usepackage{fixltx2e}
-% fixltx2e, the successor to the earlier fix2col.sty, was written by
-% Frank Mittelbach and David Carlisle. This package corrects a few problems
-% in the LaTeX2e kernel, the most notable of which is that in current
-% LaTeX2e releases, the ordering of single and double column floats is not
-% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
-% single column figure to be placed prior to an earlier double column
-% figure. The latest version and documentation can be found at:
-% http://www.ctan.org/tex-archive/macros/latex/base/
-
-%\usepackage{stfloats}
-% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
-% the ability to do double column floats at the bottom of the page as well
-% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
-% LaTeX2e). It also provides a command:
-%\fnbelowfloat
-% to enable the placement of footnotes below bottom floats (the standard
-% LaTeX2e kernel puts them above bottom floats). This is an invasive package
-% which rewrites many portions of the LaTeX2e float routines. It may not work
-% with other packages that modify the LaTeX2e float routines. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/sttools/
-% Documentation is contained in the stfloats.sty comments as well as in the
-% presfull.pdf file. Do not use the stfloats baselinefloat ability as IEEE
-% does not allow \baselineskip to stretch. Authors submitting work to the
-% IEEE should note that IEEE rarely uses double column equations and
-% that authors should try to avoid such use. Do not be tempted to use the
-% cuted.sty or midfloat.sty packages (also by Sigitas Tolusis) as IEEE does
-% not format its papers in such ways.
-
-% *** PDF, URL AND HYPERLINK PACKAGES ***
-%
-%\usepackage{url}
-% url.sty was written by Donald Arseneau. It provides better support for
-% handling and breaking URLs. url.sty is already installed on most LaTeX
-% systems. The latest version can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/misc/
-% Read the url.sty source comments for usage information. Basically,
-% \url{my_url_here}.
-
-% *** Do not adjust lengths that control margins, column widths, etc. ***
-% *** Do not use packages that alter fonts (such as pslatex).         ***
-% There should be no need to do such things with IEEEtran.cls V1.6 and later.
-% (Unless specifically asked to do so by the journal or conference you plan
-% to submit to, of course. )
-
-% correct bad hyphenation here
-\hyphenation{}
 
 \begin{document}
-%
-% paper title
-% can use linebreaks \\ within to get better formatting as desired
+
 \title{Zigbee-to-IP Application Development\\Remote Light Control with Policy}
 
-% author names and affiliations
-% use a multiple column layout for up to three different
-% affiliations
 \author{\IEEEauthorblockN{Afonso Falardo Garcia}
 \IEEEauthorblockA{Aalto University\\
 School of Science\\
@@ -317,45 +19,27 @@ afonso.falardoromeiragarcia@aalto.fi}
 School of Science\\
 jani.lollkaal@aalto.fi}}
 
-% make the title area
 \maketitle
 
-%%%%%%%%%%%%
-% ABSTRACT %
-%%%%%%%%%%%%
+\thispagestyle{plain}
+\pagestyle{plain}
 
-%\begin{abstract}
-%\boldmath
+\section{Introduction}
 
-%\end{abstract}
-% IEEEtran.cls defaults to using nonbold math in the Abstract.
-% This preserves the distinction between vectors and scalars. However,
-% if the journal you are submitting to favors bold math in the abstract,
-% then you can use LaTeX's standard command \boldmath at the very start
-% of the abstract to achieve this. Many IEEE journals frown on math
-% in the abstract anyway.
+Nowadays, many companies and individuals are implementing measures to reduce energy consumption. This can be motivated by either cost issues or by environmental beliefs. One of the commonly targeted areas is lighting systems. Keeping a light off when it's not needed is one of the most effective ways to cut energy consumption.
 
-%%%%%%%%%%%%
-% KEYWORDS %
-%%%%%%%%%%%%
+Technology can provide a way to help users achieving this goal by implementing automation systems that control the lights. These systems can vary from remote controlling the lights with a smartphone to controlling the lights automatically as the user moves around. However, they may not achieve their goal since they may be turning on lights in rooms that are illuminated by sunlight or other natural light sources.
 
-% Note that keywords are not normally used for peerreview papers.
-%\begin{IEEEkeywords}
-%Arduino, IP, Zig-bee, Ethernet, WiFi
-%\end{IEEEkeywords}
+To avoid this situation, light sensors can be integrated in the system. This way, the system will be able to know how much light is available in the room and decide to turn on a light based on this information.
 
-%%%%%%%%%%%
-% CONTENT %
-%%%%%%%%%%%
-
-%\section{Introduction}
-
+In this report, we present the implementation of a prototype for a system of this type. Our prototype is able to control a single light using an Android smartphone. In section \ref{sec_sysa} we present the overall architecture of the developed system. Section \ref{net_tech} presents the network technologies used. Section \ref{ard_setup} explains how the Arduino prototypes were setup and assembled. Section \ref{comm_sub} presents the communication between each subsystem and the configurations of the ZigBee network. Section \ref{sys_impl} explains the decisions made during the implementation of the prototype. Section \ref{sys_exts} describes two possible extensions to the prototype. Finally, section \ref{conc} discusses the prototype and concludes the report.
 
 \section{System architecture}
+\label{sec_sysa}
 
 The developed system is composed by 4 subsystems, interconnected by an IP network supported by a router and an ad-hoc Zig-bee network. The architecture of the system is demonstrated in \textit{Fig. \ref{fig_arch}}.
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[width=2.5in]{Architecture}
 \caption{System Architecture}
@@ -370,7 +54,7 @@ The third subsystem is the \textit{Server}. This system is responsible for recei
 
 The final subsystem is the \textit{Android Smartphone}. This system runs an app that emulates when an user arrives to a building by sending a request to turn on the lights and when a user leaves the building by sending a request to turn off the lights, using the protocol specified in \textit{Appendix \ref{prot_smart}}.
 
-The \textit{Base Arduino}, \textit{Server} and \textit{Android Smartphone} subsystems are connected with an IP network. The \textit{Base Arduino} and the \textit{Server} are connected to the router using Ethernet, while the \textit{Android Smartphone} uses WiFi to connect to it. However, the communication between the \textit{Base Arduino} and the \textit{Sensor Arduino} is done using Zig-bee, which means that the \textit{Base Arduino} works as a relay, receiving packets from the \textit{Server} using the IP network and forwarding the requests to the \textit{Sensor Arduino} using Zig-bee.
+The \textit{Base Arduino}, \textit{Server} and \textit{Android Smartphone} subsystems are connected with an IP network. The \textit{Base Arduino} is connected to the router using Ethernet, while the \textit{Android Smartphone} and the \textit{Server} use WiFi to connect to it. However, the communication between the \textit{Base Arduino} and the \textit{Sensor Arduino} is done using Zig-bee, which means that the \textit{Base Arduino} works as a relay, receiving packets from the \textit{Server} using the IP network and forwarding the requests to the \textit{Sensor Arduino} using Zig-bee.
 
 \begin{figure*}
 \centering
@@ -379,14 +63,53 @@ The \textit{Base Arduino}, \textit{Server} and \textit{Android Smartphone} subsy
 \label{fig_on_f}
 \end{figure*}
 
-\section{Arduino setup}
+\section{Network technologies used}
+\label{net_tech}
 
-\begin{figure}[H]
+To implement the described system, we used Ethernet (IEEE 802.3) and Wi-Fi (IEEE 802.11) technologies to communicate within the IP network. These technologies are mature technologies that are widely deployed for the communication scenarios used in our system.
+
+To communicate between the Arduinos, we use ZigBee. Part of ZigBee is standardised in IEEE 802.15.4. This is a standard defined by the IEEE 802.15 working group, which is responsible for wireless personal area networks (WPAN). Another standard defined by this workgroup is Bluetooth (IEEE 802.15.1). Although ZigBee and Bluetooth are WPAN standards, their use cases differ. In table \ref{table_zb} both technologies are compared and it is shown what type of use cases they are suited for and why.
+
+\begin{table}[h]
 \centering
-\includegraphics[width=2.5in]{Sensor_Arduino}
-\caption{Assembled Sensor Arduino}
-\label{fig_s_ard}
-\end{figure}
+\begin{tabular}{lll}
+Feature                              & ZigBee                                 & Bluetooth                 \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+{\color[HTML]{333333} Channel width} & {\color[HTML]{333333} 0.3 and 0.6 MHz} & 1 MHz                     \\
+Range                                & Up to 70 m                             & 10 m                      \\
+\rowcolor[HTML]{EFEFEF} 
+Transfer rates                       & 250 Kbps                               & 1 Mbps                    \\
+Data types                           & Small data packets                     & Text, multimedia          \\
+\rowcolor[HTML]{EFEFEF} 
+Application types                    & Remote controls, sensors               & Mouse, Keyboard, Headsets \\
+                                     &                                        &                          
+\end{tabular}
+\caption{Comparison of ZigBee and Bluetooth \cite{1_engineersgarage.com}}
+\label{table_zb}
+\end{table}
+
+Bluetooth has a higher transfer rate which makes it more suitable for applications that require large packets to be transmitted. On the other hand, ZigBee is better suited for remote controlling objects and sensor networks, since it uses less energy and, in normal usage, batteries powering ZigBee devices can last several years. It is up to 10 times faster at switching the radio from on to off, and vice versa, than Bluetooth, making it better in use cases that require frequent exchange of small messages.
+
+\section{Arduino setup}
+\label{ard_setup}
+
+The described sensor network was implemented with the Arduino platform. In the following sections, this report describes the components used and how they were assembled. The required components are presented in the list below.
+
+\begin{itemize}
+  \item 1 Arduino Ethernet
+  \item 1 Arduino Uno
+  \item 2 Arduino Wireless Proto Shield
+  \item 2 Digi International XBee S1 modules
+  \item 1 Tinkerkit Sensor Shield
+  \item 1 Tinkerkit LED
+  \item 1 Tinkerkit LDR
+\end{itemize}
+
+\subsection{Base Arduino}
+
+The \textit{Base Arduino} was assembled with 1 Arduino Ethernet, 1 Arduino Wireless Proto Shield and 1 Digi International XBee S1 module. Figure \ref{fig_b_ard} shows the assembled \textit{Base Arduino}.
+
+The assembled device takes advantage of the stackable shields to connect the Wireless Proto Shield to the Arduino. The XBee module is connected to the Wireless Proto Shield.
 
 \begin{figure}[H]
 \centering
@@ -395,7 +118,23 @@ The \textit{Base Arduino}, \textit{Server} and \textit{Android Smartphone} subsy
 \label{fig_b_ard}
 \end{figure}
 
+\subsection{Sensor Arduino}
+
+The \textit{Sensor Arduino} was assembled with 1 Arduino Uno, 1 Arduino Wireless Proto Shield, 1 Digi International XBee S1 module, 1 Tinkerkit Sensor Shield, 1 Tinkerkit LED and 1 Tinkerkit LDR. Figure \ref{fig_s_ard} shows the assembled \textit{Sensor Arduino} without the sensors connected to it.
+
+As with the \textit{Base Arduino}, the \textit{Sensor Arduino} also takes advantage of the stackable shields. This Arduino is assembled the same way as the \textit{Base Arduino}, but adds the Sensor Shield on top of the Wireless Proto Shield.
+
+The LDR and the LED are connected to the Sensor Shield using the inputs and outputs provided by it. The LDR is an input device and, as such, is connected to the inputs of the shield. To work with our code, it is connected to input 0, which maps to pin A0 in the Arduino. The LED is an output device and, as such, is connected to the outputs of the shield. To work with our code, it is connected to output 0, which maps to pin 11 in the Arduino.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=2.5in]{Sensor_Arduino}
+\caption{Assembled Sensor Arduino}
+\label{fig_s_ard}
+\end{figure}
+
 \section{Communication between subsystems}
+\label{comm_sub}
 
 On our system, the \textit{Android Smartphone} acts as the controller for the simulated light bulb on the \textit{Sensor Arduino}. Yet, they are not directly connected and must, therefore, communicate using other subsystems. This is achieved by passing messages between the subsystems.
 
@@ -410,130 +149,122 @@ In \textit{Fig. \ref{fig_on_f}}, the messages that are exchanged when the \texti
 \label{fig_off_f}
 \end{figure}
 
-% needed in second column of first page if using \IEEEpubid
-%\IEEEpubidadjcol
+\subsection{ZigBee network configuration}
 
-% An example of a floating figure using the graphicx package.
-% Note that \label must occur AFTER (or within) \caption.
-% For figures, \caption should occur after the \includegraphics.
-% Note that IEEEtran v1.7 and later has special internal code that
-% is designed to preserve the operation of \label within \caption
-% even when the captionsoff option is in effect. However, because
-% of issues like this, it may be the safest practice to put all your
-% \label just after \caption rather than within \caption{}.
-%
-% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
-% option should be used if it is desired that the figures are to be
-% displayed while in draft mode.
-%
-%\begin{figure}[!t]
-%\centering
-%\includegraphics[width=2.5in]{myfigure}
-% where an .eps filename suffix will be assumed under latex, 
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-%\caption{Simulation Results}
-%\label{fig_sim}
-%\end{figure}
+In order to communicate with ZigBee, both the \textit{Base Arduino} and the \textit{Sensor Arduino} need to configure the XBee module with the correct parameters. In this section, the report describes the configuration performed during the setup phase of the Arduino sketches.
 
-% Note that IEEE typically puts floats only at the top, even when this
-% results in a large percentage of a column being occupied by floats.
+In the experiment we needed to assign addresses for the XBee modules. This is done by issuing AT commands to the module that configure it. The commands are issued using serial communication at a rate of 9600 Bd.
 
-% An example of a double column floating figure using two subfigures.
-% (The subfig.sty package must be loaded for this to work.)
-% The subfigure \label commands are set within each subfloat command, the
-% \label for the overall figure must come after \caption.
-% \hfil must be used as a separator to get equal spacing.
-% The subfigure.sty package works much the same way, except \subfigure is
-% used instead of \subfloat.
-%
-%\begin{figure*}[!t]
-%\centerline{\subfloat[Case I]\includegraphics[width=2.5in]{subfigcase1}%
-%\label{fig_first_case}}
-%\hfil
-%\subfloat[Case II]{\includegraphics[width=2.5in]{subfigcase2}%
-%\label{fig_second_case}}}
-%\caption{Simulation results}
-%\label{fig_sim}
-%\end{figure*}
-%
-% Note that often IEEE papers with subfigures do not employ subfigure
-% captions (using the optional argument to \subfloat), but instead will
-% reference/describe all of them (a), (b), etc., within the main caption.
+The first command issued is \texttt{ATDH}, which sets the serial number of the receiving module. This value is set to \texttt{0}, which represents a broadcast, because the selection will be done by the ID in the network. The next command issued is \texttt{ATDL}, which sets the ID of the receiving module. Finally, the \texttt{ATMY} command is issued, which sets the module ID in the network. Table \ref{table_vals} shows the values used in each Arduino.
 
-% An example of a floating table. Note that, for IEEE style tables, the 
-% \caption command should come BEFORE the table. Table text will default to
-% \footnotesize as IEEE normally uses this smaller font for tables.
-% The \label must come after \caption as always.
-%
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+Command                     & \textit{Base Arduino}    & \textit{Sensor Arduino}  \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+{\color[HTML]{333333} ATDH} & {\color[HTML]{333333} 0} & {\color[HTML]{333333} 0} \\
+ATDL                        & 1235                     & 1234                     \\
+\rowcolor[HTML]{EFEFEF} 
+ATMY                        & 1234                     & 1235                     \\
+                            &                          &
+\end{tabular}
+\caption{Values of the AT commands issued}
+\label{table_vals}
+\end{table}
 
-% Note that IEEE does not put floats in the very first column - or typically
-% anywhere on the first page for that matter. Also, in-text middle ("here")
-% positioning is not used. Most IEEE journals use top floats exclusively.
-% Note that, LaTeX2e, unlike IEEE journals, places footnotes above bottom
-% floats. This can be corrected via the \fnbelowfloat command of the
-% stfloats package.
+Before issuing the described commands, both Arduinos issue the command \texttt{+++} to enter the configuration mode and \texttt{ATRE} to reset the memory of the module. After issuing the described commands, the command \textit{ATWR} is issued to write the configuration to memory and \textit{ATCN} is issued to exit configuration mode.
 
-%\section{Conclusion}
+Other AT commands are available and allow the configuration of more complex systems. One example of such commands is \texttt{ATCH}, which allows to configure the channel on which the modules communicate.
 
-% if have a single appendix:
-%\appendix[Proof of the Zonklar Equations]
-% or
-%\appendix  % for no appendix heading
-% do not use \section anymore after \appendix, only \section*
-% is possibly needed
+\section{System implementation}
+\label{sys_impl}
 
-% use appendices with more than one appendix
-% then use \section to start each appendix
-% you must declare a \section before using any
-% \subsection or using \label (\appendices by itself
-% starts a section numbered zero.)
-%
+To implement the described system, we have used the Arduino Language to program both Arduinos, Python to program the \textit{Server} and Java to program the \textit{Android Smartphone}. These decisions are justified in the sections below.
 
-%%%%%%%%%%%%%%%%
-% BIBLIOGRAPHY %
-%%%%%%%%%%%%%%%%
+\subsection{Arduino Language}
 
-%\begin{thebibliography}{1}
+The Arduino Language is similar in syntax to C, which makes it easy to learn and develop on. It supports the common control structures and operations used in other languages, even though the processing power of the Arduino is limited. Finally, it is the reference language for programming Arduinos and the language supported by the official Arduino IDE. Table \ref{table_funs} shows some of the used functions.
 
-%\bibitem{IEEEhowto:kopka}
-%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+Function                                  & Usage                                             \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+{\color[HTML]{333333} pinMode(pin, mode)} & {\color[HTML]{333333} Used to define the LED pin} \\
+digitalWrite(pin, value)                  & Used to set the value of the pin                  \\
+\rowcolor[HTML]{EFEFEF} 
+analogRead(pin)                           & 1234        \\
+&
+\end{tabular}
+\caption{Used functions}
+\label{table_funs}
+\end{table}
 
-% references section
+Together with this functions, we used the Serial and Ethernet libraries. The Serial library provides functions to interact with the XBee modules, such as \texttt{read}, \texttt{print} or \texttt{available}. The Ethernet library provides functions to communicate in the IP network and is similar in usage to the Serial library.
 
-% can use a bibliography generated by BibTeX as a .bbl file
-% BibTeX documentation can be easily obtained at:
-% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
-% The IEEEtran BibTeX style support page is at:
-% http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
-% argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
-%
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
+Other libraries for more sophisticated tasks are available, such as connecting to a GPRS network, connecting to a Wi-Fi network or drawing text and images on a TFT screen. These libraries are not needed for our system, but demonstrate the potential of the Arduino platform and possible extensions that can be implemented into our system.
 
-%\end{thebibliography}
+\subsection{Python}
+
+Python was used to implement the \texttt{Server} subsystem since it allows for rapid prototyping of the implementation. Python is less verbose than C and C like languages, which facilitates reading and maintaining the code. It also provides a mature set of libraries. Since it is an interpreted language, it provides code portability, allowing the server to run on any OS and architecture that supports Python.
+
+We use the socket library to communicate in the IP network and implement the server and the client that communicates with the \textit{Base Arduino}. The sys library is used to write a log of performed operations to a file.
+
+The light threshold is provided when launching the \textit{Server} in the command line as an argument, thus being configurable.
+
+\subsection{Java}
+
+Java was chosen to implement the \textit{Android Smartphone} subsystem since it is the programming language used for Android. Android was chosen because it allows a graphical interaction with the system and provides a simulated remote control that is closer to what would be implemented in a real system.
+
+To communicate with the \textit{Server}, we use the \texttt{Thread} class to run the communication on a different thread and the \texttt{Socket} class to communicate in the IP network. The UI is built using the libraries available in the Android SDK.
+
+\subsection{Base Arduino}
+
+To simplify the implementation of the \textit{Base Arduino} subsystem, we take advantage of the similarities between Appendix \ref{prot_ard} and Appendix \ref{prot_serv} protocols. Both protocols specify the same commands and replies and in the same format and their behaviour regarding errors and unknown commands is the same.
+
+As such, our implementation of this subsystem receives a message in the IP network and relays it to the ZigBee networking, making the \textit{Sensor Arduino} responsible for correctly implementing the protocol.
+
+\section{Extensions to the system}
+\label{sys_exts}
+
+The developed system provides a simplification of a platform that can remotely control lights and prevent the usage of the lights if there is enough light available in the room. This can be extended in multiple ways. This section presents two extensions to the system, one of which was implemented.
+
+\subsection{Multiple lights and sensors}
+
+The system described and implemented in this report could be extended to suit a real life scenario, where it could control a lighting system of a house. In a real life scenario, the system would have to be capable of controlling a number of different lights. The system could provide a way to adjust the light emmited in each room accordingly to the reading of the LDR, to maintain a constant light throughout the day.
+
+A ZigBee network would be suitable for this purpose since it works well in scenarios that involve exchanging small amounts of data between the components of the network. It also has a small response time in the radio on to radio off shifting, and vice versa, and the communication can be done between a flexible number of nodes.
+
+In this scenario, the ZigBee network could be fine tuned to allow the usage of different channels with the \texttt{ATCH} command. This would enable several nodes to transmit data simultaneously without disturbing the communication of the other nodes. This behaviour would make the system stabler and less prone to signal interference between its elements.
+
+However, in a real life scenario, the network needs to be carefully planned to avoid interferences with Wi-Fi networks operating in the same area, since some Wi-Fi channels overlap some ZigBee channels. This can be avoided with careful planning the used channels in the Wi-Fi and ZigBee networks so that there is minimal interference between the networks.
+
+To implement such a system, the protocols would have to be extended to support multiple lights. This could be done by associating each request with the ID of the light in the system. The \textit{Server} logic would have to be extended to support multiple lights and to keep track of them. Finally, the \textit{Android Smartphone} client would have to be redone to know in which part of the house the user is and to use the new functionalities provided by the \textit{Server}. If the system is designed to maintain a fixed amount of light in each room, the \textit{Android Smartphone} can be removed from the system since it doesn't need to be controlled.
+
+\subsection{Guess the light! game}
+
+The protocols designed to communicate with and within the sensor network allow its usage for different purposes than remote controlling lights. Our goal with this extension was to test its usage with a different application scenario. To do so, we have developed an extension to the Appendix \ref{prot_smart} protocol, described in Appendix \ref{prot_smart_ext}, and implemented it on the \textit{Server}.
+
+The purpose of the \textit{Guess the light!} game is to try to guess the value that is given by the LDR, truncated to the interval [0,999]. To do so, the user must provide to a client its guess, and the client will then communicate it to the server.
+
+When the server is launched, it requests the LDR reading to the sensor network and sets the replied value as the value to be guessed. This value can be changed at any time by the client by requesting a new reading.
+
+When the server receives the user guest, it compares each digit with the stored value. If a digit of the guess matches a digit of the stored value, it will instruct the sensor network to blink the light once. This is done for each correct digit. Blinking the light means turning it on and then off if the light is off and turning it off and then on if the light is on.
+
+As such, if a user correctly guesses any 2 digits of the stored value, the lights will blink twice. If a user correctly guesses the stored value, the lights will blink three times. Note that the correctly guessed digit must match the digit in the stored value. This means that if the stored value is 234 and the user guesses 342, the lights won't blink, even though the user correctly guessed all three digits, because they aren't in the right order.
+
+\section{Conclusion}
+\label{conc}
+
+This report presents a prototype of a light control system that is capable of controlling a light and decide if that light should be turned on based on the reading of the amount of light available. It is able to correctly perform the tasks described in this report.
+
+Some possible extensions to the system were discussed, including how to extend the prototype to a system capable of controlling more than one light.
+
+\bibliographystyle{IEEEtran}
+\bibliography{biblio}
+
+\clearpage
+\setcounter{page}{1}
 
 \appendices
 
@@ -547,6 +278,12 @@ If the \textit{Sensor Arduino} receives a command that is not part of the specif
 \subsection{REQ command}
 
 The \textbf{REQ} command is issued for requesting the LDR's value. It is sent as the 3 character sequence \texttt{REQ}, without any special character terminating it. The expected reply to this command is a character sequence with, at most, 4 characters that represents an integer value in the range from 0 to 1023. Any other value received is an error and should be discarded.
+
+Under normal operation, the \textit{Sensor Arduino} always executes the command.
+
+\subsection{STS command}
+
+The \textbf{STS} command is issued for requesting the LED's status. It is sent as the 3 character sequence \texttt{STS}, without any special character terminating it. The expected reply to this command is a character sequence with 1 character that represents an integer value. The value \texttt{0} is replied if the light is off, and \texttt{1} is replied if the light is on. Any other value received is an error and should be discarded.
 
 Under normal operation, the \textit{Sensor Arduino} always executes the command.
 
@@ -572,6 +309,12 @@ If the \textit{Base Arduino} receives a command that is not part of the specific
 \subsection{REQ command}
 
 The \textbf{REQ} command is issued for requesting the LDR's value. It is sent as the 3 character sequence \texttt{REQ}, without any special character terminating it. The expected reply to this command is a character sequence with, at most, 4 characters that represents an integer value in the range from 0 to 1023. Any other value received is an error and should be discarded.
+
+Under normal operation, the \textit{Base Arduino} always executes the command.
+
+\subsection{STS command}
+
+The \textbf{STS} command is issued for requesting the LED's status. It is sent as the 3 character sequence \texttt{STS}, without any special character terminating it. The expected reply to this command is a character sequence with 1 character that represents an integer value. The value \texttt{0} is replied if the light is off, and \texttt{1} is replied if the light is on. Any other value received is an error and should be discarded.
 
 Under normal operation, the \textit{Base Arduino} always executes the command.
 
@@ -606,5 +349,29 @@ The \textbf{OFF} command is issued to turn off the LED. It is sent as the 4 char
 
 Under normal operation, the \textit{Server} always executes the command.
 
-% that's all folks
+\subsection{STS command}
+
+The \textbf{STS} command is issued for requesting the LED's status. It is sent as the 4 character sequence \texttt{STS\textbackslash n}. The expected reply to this command is a character sequence with 2 characters that represents an integer value. The value \texttt{0\textbackslash n} is replied if the light is off, and \texttt{1\textbackslash n} is replied if the light is on. Any other value received is an error and should be discarded.
+
+Under normal operation, the \textit{Server} always executes the command.
+
+\vfill\eject
+
+\section{Game extensions to the Appendix \ref{prot_smart} protocol}
+\label{prot_smart_ext}
+
+The aim of this extension to the protocol described in \textit{Appendix \ref{prot_smart}} is the transmission of commands from the \textit{Client} to the \textit{Server} to control the game. The commands are sent in text and have a maximum size of 8 characters. The replies are also sent in text and have a maximum size of 4 characters. The commands and replies are terminated with the special character \texttt{\textbackslash n}.
+
+If the \textit{Server} receives a command that is not part of the specification, it replies with the 4 character sequence \textit{NOK\textbackslash n}.
+
+\subsection{RES command}
+The \textbf{RES} command is issued to reset the value that the user has to guess. It is sent as the 4 character sequence \texttt{RES\textbackslash n}. The expected reply to this command is the character sequence \texttt{OK\textbackslash n}, representing the successful execution of the command. Any other value received is an error and should be discarded.
+
+Under normal operation, the \textit{Server} always executes the command.
+
+\subsection{G command}
+The \textbf{G} command is issued to send the user's guess. It is sent as the 8 character sequence \texttt{G X Y Z\textbackslash n}, where \texttt{X} represents the most significant digit of the guess, \texttt{Y} the second most significant digit of the guess, and \texttt{Z} the least significant digit of the guess. The expected reply to this command is the character sequence \texttt{OK\textbackslash n}, representing the successful execution of the command. Any other value received is an error and should be discarded.
+
+Under normal operation, the \textit{Server} always executes the command.
+
 \end{document}
