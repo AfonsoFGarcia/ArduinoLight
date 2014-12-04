@@ -45,7 +45,7 @@ def getlight():
 	return num(sendmessage('REQ'))
 
 def setlight(val):
-	return num(sendmessage(val))
+	return sendmessage(val)
 
 def blink(times):
 	for x in range(0, times):
