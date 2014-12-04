@@ -48,11 +48,19 @@ def setlight(val):
 	return sendmessage(val)
 
 def blink(times):
-	for x in range(0, times):
-		setlight('ON')
-		sleep(0.2)
-		setlight('OFF')
-		sleep(0.2)
+	data = sendmessage('STS')
+	if data == '0':
+		for x in range(0, times):
+			setlight('ON')
+			sleep(0.2)
+			setlight('OFF')
+			sleep(0.2)
+	else:
+		for x in range(0, times):
+			setlight('OFF')
+			sleep(0.2)
+			setlight('ON')
+			sleep(0.2)
 
 def getval(val):
 	temp = val
