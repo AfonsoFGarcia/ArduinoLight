@@ -59,11 +59,23 @@ public class MainActivity extends Activity {
             final EditText serverIP = (EditText) findViewById(R.id.ipText);
             try {
                 server = new ServerConnect(serverIP.getText().toString(), 5000);
-                runOnUiThread(new SetLogs("Connected to server!"));
+                runOnUiThread(new SetLogs("Connected to server"));
+                final String reply = server.sendStatus();
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         Button switchButton = (Button) findViewById(R.id.switchButton);
+
+                        if(reply.equals("0")) {
+                            new SetLogs("Light is off").run();
+                            lightOn = false;
+                            switchButton.setText("Turn on light");
+                        } else {
+                            new SetLogs("Light is on").run();
+                            lightOn = true;
+                            switchButton.setText("Turn off light");
+                        }
+
                         switchButton.setEnabled(true);
                     }
                 });
@@ -80,7 +92,7 @@ public class MainActivity extends Activity {
             try {
                 String reply = server.sendOn();
                 if (reply.equals("OK")) {
-                    runOnUiThread(new SetLogs("Light is now on!"));
+                    runOnUiThread(new SetLogs("Light is now on"));
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -90,7 +102,7 @@ public class MainActivity extends Activity {
                     });
                     lightOn = true;
                 } else {
-                    runOnUiThread(new SetLogs("Did not change the light!"));
+                    runOnUiThread(new SetLogs("Did not change the light"));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -104,7 +116,7 @@ public class MainActivity extends Activity {
         public void run() {
             try {
                 server.sendOff();
-                runOnUiThread(new SetLogs("Light is now off!"));
+                runOnUiThread(new SetLogs("Light is now off"));
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

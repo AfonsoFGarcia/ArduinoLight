@@ -20,6 +20,10 @@ public class ServerConnect {
         return sendToServer("OFF");
     }
 
+    public String sendStatus() throws IOException {
+        return sendToServer("STS");
+    }
+
     private String sendToServer(String message) throws IOException {
         Socket server = new Socket(TCP_IP, TCP_PORT);
         PrintWriter out = new PrintWriter(server.getOutputStream(), true);
