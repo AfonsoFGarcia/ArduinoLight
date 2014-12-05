@@ -151,7 +151,7 @@ In \textit{Fig. \ref{fig_on_f}}, the messages that are exchanged when the \texti
 
 \subsection{ZigBee network configuration}
 
-In order to communicate with ZigBee, both the \textit{Base Arduino} and the \textit{Sensor Arduino} need to configure the XBee module with the correct parameters. In this section, the report describes the configuration performed during the setup phase of the Arduino sketches.
+In order to communicate with ZigBee, both the \textit{Base Arduino} and the \textit{Sensor Arduino} need to configure the XBee module with the correct parameters. In this section, the report describes the configuration performed during the setup phase of the Arduino sketches, which is based on the configuration provided in \textit{Making Things Talk} \cite[Chapter~6]{igoe2007making}.
 
 In the experiment we needed to assign addresses for the XBee modules. This is done by issuing AT commands to the module that configure it. The commands are issued using serial communication at a rate of 9600 Bd.
 
@@ -257,6 +257,10 @@ As such, if a user correctly guesses any 2 digits of the stored value, the light
 \label{conc}
 
 This report presents a prototype of a light control system that is capable of controlling a light and decide if that light should be turned on based on the reading of the amount of light available. It is able to correctly perform the tasks described in this report.
+
+ZigBee has a good set of properties for developing remote control systems, specifically for the home networking systems. It provides low power consumption, low datarate and is low cost \cite{lee2013experimental}, therefore being well suited for these applications. There is also an interest by the ZigBee Aliance in further developing the standard and ZigBee products with companies with the goal to market driven requirements in the development of new features in the standard. \cite{2_the_zigbee_alliance} Setting up the ZigBee network, with the AT commands, was easy and fast. The innovative usage of the standard can further strengthen its position in the WPAN area.
+
+We have found the syntax of the Arduino language very clear and learnable in a short amount of time, enabling developers to build ZigBee based control systems faster.
 
 Some possible extensions to the system were discussed, including how to extend the prototype to a system capable of controlling more than one light.
 
